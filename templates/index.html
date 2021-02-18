@@ -4,13 +4,21 @@
   <title>Hello world!</title>
   <link type="text/css" rel="stylesheet"
         href="{{ url_for('static',
-              filename='hello.css')}}" />
+              filename='style.css')}}" />
 </head>
 <body>
-  <h1>Superhero Game</h1>
-  <h2>Choose your heroes!</h2>
-  {% for hero in heroes %}
-    <a href="{{ url_for('superhero', name=hero.name.lower()) }}"><img src ="{{hero.image_path}}" style = "width: 300px"/></a>
-  {% endfor %}
+  <header>
+    <h1 class="centered">Superhero Game</h1>
+  </header>
+  <main>
+    <h2 class="centered">Choose your heroes!</h2>
+    <div class="hero-list">
+      {% for hero in heroes %}
+        <a href="{{ url_for('superhero', name=hero.name.lower()) }}" class="card">
+          <img src="{{hero.image_path}}" />
+        </a>
+      {% endfor %}
+    </div>
+  </main>
 </body>
 </html>
