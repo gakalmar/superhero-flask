@@ -14,9 +14,9 @@
     <h2 class="centered">Choose your heroes!</h2>
     <div class="hero-list">
       {% for hero in heroes %}
-        <a href="{{ url_for('second_hero', name=hero.name.lower()) }}"
+        <a href="{{ url_for('fight', hero1=hero1.name.lower(), hero2=hero.name.lower()) }}"
            class="card">
-          <img class="{% if hero.chosen == True %}inactive{% endif %}"
+          <img class="{% if hero == hero1 %}inactive{% endif %}"
                src="{{hero.image_path}}" />
         </a>
       {% endfor %}

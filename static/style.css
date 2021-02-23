@@ -47,3 +47,7 @@ h1 {
 .card img {
   width: 100%;
 }
+
+.inactive {
+  opacity: .2;
+}

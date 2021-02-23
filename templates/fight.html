@@ -11,16 +11,27 @@
     <h1 class="centered">Superhero Game</h1>
   </header>
   <main>
-    <h2 class="centered">Choose your heroes!</h2>
+    <h2 class="centered">  {{ hero1 }} VS {{ hero2 }}</h2>
+
     <div class="hero-list">
-      {% for hero in heroes %}
-        <a href="{{ url_for('second_hero', name=hero.name.lower()) }}"
-           class="card">
-          <img class="{% if hero.chosen == True %}inactive{% endif %}"
-               src="{{hero.image_path}}" />
-        </a>
-      {% endfor %}
+
+    <div>
     </div>
+
+    <div class="card">
+      <img src="{{hero1.image_path}}" />
+    </div>
+
+    <div class="card">
+      <img src="{{hero2.image_path}}" />
+    </div>
+
+    <div>
+    </div>
+
+    </div>
+
+    <a href="{{ url_for('start_fight', hero1=hero1, hero2=hero2)}}">Start fighting!</a>
   </main>
 </body>
 </html>
