@@ -1,0 +1,45 @@
+<html lang='en'>
+<head>
+  <meta charset="utf-8" />
+  <title>Hello world!</title>
+  <link type="text/css" rel="stylesheet"
+        href="{{ url_for('static',
+              filename='style.css')}}" />
+</head>
+<body>
+  <header>
+    <h1 class="centered">Superhero Game</h1>
+  </header>
+  <main>
+    <h2 class="centered">  {{ hero1 }} VS {{ hero2 }}</h2>
+
+    <div>
+    After the first fight:
+
+    <h4>{{ hero1.name }} has {{hero1.life}} health points</h4>
+
+    <h4>{{ hero2.name }} has {{hero2.life}} health points</h4>
+    </div>
+
+    <div class="hero-list">
+
+    <div>{{ message }}
+    </div>
+
+    <div class="card">
+      <img src="{{hero1.image_path}}" />
+    </div>
+
+    <div class="card">
+      <img src="{{hero2.image_path}}" />
+    </div>
+
+    <div>
+    </div>
+
+    </div>
+
+    <a href="{{ url_for('start_fight', hero1=hero1, hero2=hero2)}}">Start fighting!</a>
+  </main>
+</body>
+</html>
