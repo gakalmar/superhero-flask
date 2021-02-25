@@ -48,8 +48,7 @@ class Fight:
 
     def start(self):
         if self.has_ended:
-            print("This fight is over. If you want to fight again, start a new fight!")
-            return
+            return "This fight is over. If you want to fight again, start a new fight!"
 
         def check_if_anyone_is_sick():
             result = None
@@ -62,9 +61,10 @@ class Fight:
         sick_hero = check_if_anyone_is_sick()
 
         if sick_hero is not None:
-            print(f"They will not fight - {sick_hero.name} is too sick ☹️ ")
-            print("They will have to go to the hospital 🏥 🚑 👩‍⚕️")
-            return
+            return f'''
+            They will not fight - {sick_hero.name} is too sick ☹️
+            They will have to go to the hospital 🏥 🚑 👩‍⚕️
+            '''
 
         print(f"Friendly fight: {self.p1.name} VS {self.p2.name}")
         print("----------------------------------------------------------")
@@ -72,16 +72,18 @@ class Fight:
         # Fight scene starts here:
         round_number = 1
         print(f"{self.p1.name} will start the battle!")
-        while round_number < 3:
+        while round_number < 2:
 
             self.p1.damage = random.randint(self.p1.damagemin, self.p1.damagemax)
             self.p2.damage = random.randint(self.p2.damagemin, self.p2.damagemax)
 
-            self.p2.life -= min(self.p1.damage, self.p2.life - 1)
+            #self.p2.life -= min(self.p1.damage, self.p2.life - 1)
+            self.p2.life -= self.p1.damage
             if self.p2.life <= 0:
                 return f"{self.p1.name} has won the battle!!! It's time for someone to take {self.p2.name} to the hospital!"
 
-            self.p1.life -= min(self.p2.damage, self.p1.life - 1)
+            #self.p1.life -= min(self.p2.damage, self.p1.life - 1)
+            self.p1.life -= self.p2.damage
             if self.p1.life <= 0:
                 return f"{self.p2.name} has won the battle!!! It's time for someone to take {self.p2.name} to the hospital!"
 

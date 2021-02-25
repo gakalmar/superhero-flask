@@ -59,7 +59,7 @@ def start_fight(hero1, hero2):
     hero2 = superheroes.get(hero2.lower())
 
     fight = Fight(hero1, hero2).start()
-    return flask.render_template("after_fight.html", hero1=hero1, hero2=hero2)
+    return flask.render_template("after_fight.html", hero1=hero1, hero2=hero2, message=fight)
 
 
 if __name__ == "__main__":
